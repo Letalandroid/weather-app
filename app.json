@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Weather App",
-    "slug": "Weather App",
+    "slug": "weather-app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,10 +21,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.letalandroid.weatherapp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "8a6d77f5-4ea3-4fdb-b8c5-f1391a76b5f9"
+      }
     }
   }
 }
