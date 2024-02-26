@@ -28,7 +28,7 @@ export default function Menu({ setCity, setMove }) {
 		<>
 			<View style={styles.container}>
 				{viewSearch && (
-					<>
+					<View style={styles.containerInput}>
 						<TextInput
 							style={styles.input}
 							placeholder="Busca tu ciudad/pais"
@@ -47,10 +47,11 @@ export default function Menu({ setCity, setMove }) {
 							style={styles.btn}>
 							<Text style={styles.btn_text}>Buscar</Text>
 						</TouchableHighlight>
-					</>
+					</View>
 				)}
 				{search != '' && (
 					<Cards
+						viewSearch={viewSearch}
 						setViewSearch={setViewSearch}
 						setMove={setMove}
 						setCity={setCity}
@@ -69,8 +70,15 @@ const styles = StyleSheet.create({
 		width: '100%',
 		alignItems: 'center',
 		backgroundColor: '#2A2A2A',
-		paddingTop: StatusBar.currentHeight,
 		paddingHorizontal: 20,
+	},
+	containerInput: {
+		position: 'relative',
+		zIndex: 10,
+		width: '100%',
+		alignItems: 'center',
+		backgroundColor: '#2A2A2A',
+		paddingTop: StatusBar.currentHeight,
 	},
 	input: {
 		position: 'relative',
