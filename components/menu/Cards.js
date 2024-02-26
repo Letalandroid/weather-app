@@ -6,12 +6,18 @@ import { useFonts } from 'expo-font';
 import Icon_Search from 'react-native-vector-icons/Fontisto';
 import Icon_Move from 'react-native-vector-icons/AntDesign';
 
-export default function Cards({ country, setCity, setMove, setViewSearch }) {
+export default function Cards({
+	country='',
+	setCity,
+	setMove,
+	setViewSearch,
+	viewSearch,
+}) {
 	const setearCountry = (text) => {
 		country = text;
 	};
 
-	country === '' && setearCountry('Dejaste el campo vacio gil.');
+	country === '' || country.startsWith(' ') && setearCountry('Dejaste el campo vacio gil.');
 
 	const [scroll, setScroll] = useState(0);
 	const [url] = useState(`https://restcountries.com/v3.1/name/${country}`);
@@ -70,19 +76,19 @@ export default function Cards({ country, setCity, setMove, setViewSearch }) {
 			<View
 				style={{
 					position: 'absolute',
-					bottom: scroll,
+					bottom: viewSearch ? scroll + 170 : scroll - 10,
 					right: 0,
 				}}>
 				<TouchableHighlight
 					underlayColor="#fffd"
 					style={styles.btn_search}
-					onPress={() => setScroll(scroll - 20)}>
+					onPress={() => setScroll(scroll + 20)}>
 					<Icon_Move name="caretup" size={30} />
 				</TouchableHighlight>
 				<TouchableHighlight
 					underlayColor="#fffd"
 					style={styles.btn_search}
-					onPress={() => setScroll(scroll + 20)}>
+					onPress={() => setScroll(scroll - 20)}>
 					<Icon_Move name="caretdown" size={30} />
 				</TouchableHighlight>
 				<TouchableHighlight
@@ -103,6 +109,7 @@ const styles = StyleSheet.create({
 		fontFamily: 'Impact',
 		letterSpacing: 2.5,
 		textAlign: 'center',
+		marginTop: 20,
 	},
 	btn: {
 		height: 60,
